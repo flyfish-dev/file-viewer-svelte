@@ -1,5 +1,7 @@
 import {
+  createViewerControllerHandle,
   type ViewerController,
+  type ViewerControllerHandle,
   type ViewerMountOptions,
   type ViewerCoreOptions,
   mountViewer as mountCoreViewer
@@ -30,7 +32,11 @@ export type {
   ViewerToolbarOptions,
   ViewerToolbarPosition,
   ViewerTypstOptions,
-  ViewerWatermarkOptions
+  ViewerWatermarkOptions,
+  ViewerLifecycleContext,
+  ViewerOperationContext,
+  ViewerState,
+  ViewerStateListener
 } from './controller.js'
 
 export interface FileViewerSvelteActionOptions extends ViewerMountOptions {
@@ -43,6 +49,29 @@ export interface FileViewerSvelteActionOptions extends ViewerMountOptions {
 export interface FileViewerSvelteActionReturn {
   update(options?: FileViewerSvelteActionOptions): void
   destroy(): void
+  getController: ViewerControllerHandle['getController']
+  getApi: ViewerControllerHandle['getApi']
+  load: ViewerControllerHandle['load']
+  reload: ViewerControllerHandle['reload']
+  downloadOriginalFile: ViewerControllerHandle['downloadOriginalFile']
+  printRenderedHtml: ViewerControllerHandle['printRenderedHtml']
+  exportRenderedHtml: ViewerControllerHandle['exportRenderedHtml']
+  zoomIn: ViewerControllerHandle['zoomIn']
+  zoomOut: ViewerControllerHandle['zoomOut']
+  resetZoom: ViewerControllerHandle['resetZoom']
+  searchDocument: ViewerControllerHandle['searchDocument']
+  clearDocumentSearch: ViewerControllerHandle['clearDocumentSearch']
+  nextSearchResult: ViewerControllerHandle['nextSearchResult']
+  previousSearchResult: ViewerControllerHandle['previousSearchResult']
+  collectDocumentAnchors: ViewerControllerHandle['collectDocumentAnchors']
+  scrollToAnchor: ViewerControllerHandle['scrollToAnchor']
+  scrollToLine: ViewerControllerHandle['scrollToLine']
+  getDocumentTextChunks: ViewerControllerHandle['getDocumentTextChunks']
+  getOperationAvailability: ViewerControllerHandle['getOperationAvailability']
+  getZoomState: ViewerControllerHandle['getZoomState']
+  getSearchState: ViewerControllerHandle['getSearchState']
+  getState: ViewerControllerHandle['getState']
+  subscribe: ViewerControllerHandle['subscribe']
 }
 
 const canUseDom = () => typeof window !== 'undefined' && typeof document !== 'undefined'
@@ -66,6 +95,13 @@ export const fileViewer = (
 ): FileViewerSvelteActionReturn => {
   let options = initialOptions
   let controller: ViewerController | null = null
+  const handle = createViewerControllerHandle(() => controller, () => {
+    controller?.destroy()
+    controller = null
+    if (options.replace !== false) {
+      clearContainer(node)
+    }
+  })
 
   const mount = () => {
     if (!canUseDom()) {
@@ -103,12 +139,31 @@ export const fileViewer = (
       mount()
     },
     destroy() {
-      controller?.destroy()
-      controller = null
-      if (options.replace !== false) {
-        clearContainer(node)
-      }
-    }
+      handle.destroy()
+    },
+    getController: handle.getController,
+    getApi: handle.getApi,
+    load: handle.load,
+    reload: handle.reload,
+    downloadOriginalFile: handle.downloadOriginalFile,
+    printRenderedHtml: handle.printRenderedHtml,
+    exportRenderedHtml: handle.exportRenderedHtml,
+    zoomIn: handle.zoomIn,
+    zoomOut: handle.zoomOut,
+    resetZoom: handle.resetZoom,
+    searchDocument: handle.searchDocument,
+    clearDocumentSearch: handle.clearDocumentSearch,
+    nextSearchResult: handle.nextSearchResult,
+    previousSearchResult: handle.previousSearchResult,
+    collectDocumentAnchors: handle.collectDocumentAnchors,
+    scrollToAnchor: handle.scrollToAnchor,
+    scrollToLine: handle.scrollToLine,
+    getDocumentTextChunks: handle.getDocumentTextChunks,
+    getOperationAvailability: handle.getOperationAvailability,
+    getZoomState: handle.getZoomState,
+    getSearchState: handle.getSearchState,
+    getState: handle.getState,
+    subscribe: handle.subscribe
   }
 }
 

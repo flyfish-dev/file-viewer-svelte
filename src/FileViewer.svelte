@@ -72,7 +72,83 @@
   }
 
   export function reload() {
-    handle.reload()
+    return handle.reload()
+  }
+
+  export function downloadOriginalFile() {
+    return handle.downloadOriginalFile()
+  }
+
+  export function printRenderedHtml() {
+    return handle.printRenderedHtml()
+  }
+
+  export function exportRenderedHtml() {
+    return handle.exportRenderedHtml()
+  }
+
+  export function zoomIn() {
+    return handle.zoomIn()
+  }
+
+  export function zoomOut() {
+    return handle.zoomOut()
+  }
+
+  export function resetZoom() {
+    return handle.resetZoom()
+  }
+
+  export function searchDocument(query) {
+    return handle.searchDocument(query)
+  }
+
+  export function clearDocumentSearch() {
+    return handle.clearDocumentSearch()
+  }
+
+  export function nextSearchResult() {
+    return handle.nextSearchResult()
+  }
+
+  export function previousSearchResult() {
+    return handle.previousSearchResult()
+  }
+
+  export function collectDocumentAnchors() {
+    return handle.collectDocumentAnchors()
+  }
+
+  export function scrollToAnchor(anchor) {
+    return handle.scrollToAnchor(anchor)
+  }
+
+  export function scrollToLine(line) {
+    return handle.scrollToLine(line)
+  }
+
+  export function getDocumentTextChunks() {
+    return handle.getDocumentTextChunks()
+  }
+
+  export function getOperationAvailability() {
+    return handle.getOperationAvailability()
+  }
+
+  export function getZoomState() {
+    return handle.getZoomState()
+  }
+
+  export function getSearchState() {
+    return handle.getSearchState()
+  }
+
+  export function getState() {
+    return handle.getState()
+  }
+
+  export function subscribe(listener) {
+    return handle.subscribe(listener)
   }
 
   export function destroy() {

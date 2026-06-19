@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-06-19T10:08:26.420Z",
+  "generatedAt": "2026-06-19T12:31:17.969Z",
   "sourceBranch": "v3",
-  "sourceCommit": "aa31fe9",
+  "sourceCommit": "3e293b0",
   "organization": "flyfish-dev",
   "framework": "Svelte",
   "packageName": "@file-viewer/svelte",
@@ -16,7 +16,7 @@
     "types"
   ],
   "historicalPackages": [],
-  "sourcePackageDir": "packages/wrappers/svelte",
+  "sourcePackageDir": "packages/components/svelte",
   "corePackage": "@file-viewer/core",
-  "coreSourceVisibility": "private-source"
+  "coreSourceVisibility": "public-source"
 }
