@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-06-19T12:36:38.395Z",
+  "generatedAt": "2026-06-19T16:52:46.742Z",
   "sourceBranch": "v3",
-  "sourceCommit": "9792428",
+  "sourceCommit": "39d740b",
   "organization": "flyfish-dev",
   "framework": "Svelte",
   "packageName": "@file-viewer/svelte",
