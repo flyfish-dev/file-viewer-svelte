@@ -1,6 +1,6 @@
 {
   "name": "@file-viewer/svelte",
-  "version": "2.0.11",
+  "version": "2.1.1",
   "private": false,
   "type": "module",
   "description": "Standard Svelte component package for Flyfish File Viewer",
@@ -10,7 +10,10 @@
     "svelte",
     "sveltekit",
     "native-viewer",
-    "office-preview"
+    "office-preview",
+    "document-viewer",
+    "file-preview",
+    "self-hosted"
   ],
   "svelte": "./src/FileViewer.svelte",
   "main": "./dist/index.js",
@@ -30,6 +33,10 @@
   "homepage": "https://github.com/flyfish-dev/file-viewer-svelte",
   "bugs": {
     "url": "https://github.com/flyfish-dev/file-viewer-svelte/issues"
+  },
+  "funding": {
+    "type": "individual",
+    "url": "https://dev.flyfish.group/shop"
   },
   "types": "./src/FileViewer.svelte.d.ts",
   "exports": {
@@ -67,7 +74,7 @@
     "svelte": ">=3.59 <6"
   },
   "dependencies": {
-    "@file-viewer/core": "^2.0.11"
+    "@file-viewer/core": "^2.1.1"
   },
   "devDependencies": {
     "svelte": "^5.46.0",
