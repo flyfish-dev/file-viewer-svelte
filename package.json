@@ -1,0 +1,95 @@
+{
+  "name": "@file-viewer/svelte",
+  "version": "3.3.1",
+  "private": false,
+  "type": "module",
+  "description": "Lightweight Svelte file viewer. Add PDF, Office and other browser-side previews with renderer presets.",
+  "keywords": [
+    "file-viewer",
+    "document-preview",
+    "svelte",
+    "sveltekit",
+    "native-viewer",
+    "office-preview",
+    "document-viewer",
+    "file-preview",
+    "self-hosted"
+  ],
+  "svelte": "./dist/FileViewer.client.js",
+  "main": "./dist/FileViewer.client.js",
+  "module": "./dist/FileViewer.client.js",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "author": {
+    "name": "Yu Wang",
+    "email": "admin@flyfish.dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/flyfish-dev/file-viewer-svelte.git"
+  },
+  "homepage": "https://github.com/flyfish-dev/file-viewer-svelte",
+  "bugs": {
+    "url": "https://github.com/flyfish-dev/file-viewer-svelte/issues"
+  },
+  "funding": {
+    "type": "individual",
+    "url": "https://dev.flyfish.group/donate?source=npm"
+  },
+  "types": "./dist/runtime-types.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/runtime-types.d.ts",
+      "svelte": {
+        "browser": "./dist/FileViewer.client.js",
+        "node": "./dist/FileViewer.server.js",
+        "default": "./dist/FileViewer.client.js"
+      },
+      "browser": "./dist/FileViewer.client.js",
+      "node": "./dist/FileViewer.server.js",
+      "import": "./dist/FileViewer.client.js",
+      "default": "./dist/FileViewer.client.js"
+    },
+    "./action": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./controller": {
+      "types": "./dist/controller.d.ts",
+      "import": "./dist/controller.js",
+      "default": "./dist/controller.js"
+    },
+    "./types": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "README.en.md",
+    "README.zh-CN.md"
+  ],
+  "scripts": {
+    "build": "tsc -b tsconfig.json && node scripts/build-support/build-svelte-runtime.mjs --package-root .",
+    "type-check": "tsc -b tsconfig.json"
+  },
+  "peerDependencies": {
+    "svelte": ">=3.59 <6"
+  },
+  "dependencies": {
+    "@file-viewer/core": "3.3.1"
+  },
+  "devDependencies": {
+    "esbuild": "0.28.2",
+    "svelte": "^5.57.0",
+    "typescript": "^6.0.3"
+  },
+  "license": "Apache-2.0",
+  "packageManager": "pnpm@11.0.9"
+}
